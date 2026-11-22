@@ -119,8 +119,8 @@ class DeterministicNoiseDetector {
         val trimmed = text.trim()
         if (trimmed.isEmpty()) return false
 
-        // 1. Numbered lists: 1. / 1) / 1.1 / (1) / (a) / a)
-        if (trimmed.matches(Regex("""^(\d+(\.\d+)*[\.\):]|\([0-9a-zA-Z]+\)|[a-zA-Z]\))\s+.*"""))) {
+        // 1. Numbered lists & sub-clauses: 1. / 1) / 1.1 / 2.1 / (1) / (a) / a)
+        if (trimmed.matches(Regex("""^(\d+(\.\d+)*[\.\):]?|\([0-9a-zA-Z]+\)|[a-zA-Z]\))\s+.*"""))) {
             return true
         }
 
@@ -135,7 +135,7 @@ class DeterministicNoiseDetector {
         }
 
         // 4. Legal clauses / sections: Section 4.1 / Article II / Clause (b)
-        if (trimmed.matches(Regex("""^(Section|Article|Clause|Rule|Act|Part|Paragraph)\s+([0-9IVXLCDM]+|[a-zA-Z]+).*""", RegexOption.IGNORE_CASE))) {
+        if (trimmed.matches(Regex("""^(Section|Article|Clause|Rule|Act|Part|Paragraph)\s+([0-9IVXLCDM\.]+|[a-zA-Z]+).*""", RegexOption.IGNORE_CASE))) {
             return true
         }
 
