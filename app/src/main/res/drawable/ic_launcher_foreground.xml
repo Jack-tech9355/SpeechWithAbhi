@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Group centered with proper safe zone margins -->
+    <group
+        android:translateX="0"
+        android:translateY="0">
+
+        <!-- Outer Dynamic Acoustic Sound Wave Arc (Electric Cyan) -->
+        <path
+            android:strokeColor="#38BDF8"
+            android:strokeWidth="2.5"
+            android:strokeLineCap="round"
+            android:fillColor="#00000000"
+            android:pathData="M76,40 C82,45 85,52 85,60 C85,68 81,75 75,80" />
+
+        <!-- Inner Sound Wave Arc -->
+        <path
+            android:strokeColor="#60A5FA"
+            android:strokeWidth="2"
+            android:strokeLineCap="round"
+            android:fillColor="#00000000"
+            android:pathData="M71,46 C75,50 77,55 77,60 C77,65 74,70 70,74" />
+
+        <!-- Left Ambient Wave Arc -->
+        <path
+            android:strokeColor="#38BDF8"
+            android:strokeWidth="2.5"
+            android:strokeLineCap="round"
+            android:fillColor="#00000000"
+            android:pathData="M32,40 C26,45 23,52 23,60 C23,68 27,75 33,80" />
+
+        <!-- Left Page of Holographic Folio -->
+        <path
+            android:fillColor="#1D4ED8"
+            android:pathData="M30,73 C37,69 46,69 54,73 L54,58 C46,54 37,54 30,58 Z" />
+
+        <!-- Left Page Upper Highlight -->
+        <path
+            android:fillColor="#3B82F6"
+            android:pathData="M30,71 C37,67 46,67 54,71 L54,69 C46,65 37,65 30,69 Z" />
+
+        <!-- Right Page of Holographic Folio -->
+        <path
+            android:fillColor="#2563EB"
+            android:pathData="M54,73 C62,69 71,69 78,73 L78,58 C71,54 62,54 54,58 Z" />
+
+        <!-- Right Page Upper Highlight -->
+        <path
+            android:fillColor="#60A5FA"
+            android:pathData="M54,71 C62,67 71,67 78,71 L78,69 C71,65 62,65 54,69 Z" />
+
+        <!-- Open Book Spine Base Notch -->
+        <path
+            android:fillColor="#1E3A8A"
+            android:pathData="M52,73 L56,73 L54,76 Z" />
+
+        <!-- Vertical Acoustic Equalizer Bar 1 (Leftmost, Cyan) -->
+        <path
+            android:fillColor="#38BDF8"
+            android:pathData="M40,50 L44,50 A2,2 0 0,1 46,52 L46,64 A2,2 0 0,1 44,66 L40,66 A2,2 0 0,1 38,64 L38,52 A2,2 0 0,1 40,50 Z" />
+
+        <!-- Vertical Acoustic Equalizer Bar 2 (Mid-Left, Warm Amber) -->
+        <path
+            android:fillColor="#F59E0B"
+            android:pathData="M46,42 L50,42 A2,2 0 0,1 52,44 L52,65 A2,2 0 0,1 50,67 L46,67 A2,2 0 0,1 44,65 L44,44 A2,2 0 0,1 46,42 Z" />
+
+        <!-- Vertical Acoustic Equalizer Bar 3 (Center Crest, Gold / Diamond) -->
+        <path
+            android:fillColor="#FCD34D"
+            android:pathData="M52,34 L56,34 A2,2 0 0,1 58,36 L58,66 A2,2 0 0,1 56,68 L52,68 A2,2 0 0,1 50,66 L50,36 A2,2 0 0,1 52,34 Z" />
+
+        <!-- Vertical Acoustic Equalizer Bar 4 (Mid-Right, Warm Amber) -->
+        <path
+            android:fillColor="#F59E0B"
+            android:pathData="M58,42 L62,42 A2,2 0 0,1 64,44 L64,65 A2,2 0 0,1 62,67 L58,67 A2,2 0 0,1 56,65 L56,44 A2,2 0 0,1 58,42 Z" />
+
+        <!-- Vertical Acoustic Equalizer Bar 5 (Rightmost, Cyan) -->
+        <path
+            android:fillColor="#38BDF8"
+            android:pathData="M64,50 L68,50 A2,2 0 0,1 70,52 L70,64 A2,2 0 0,1 68,66 L64,66 A2,2 0 0,1 62,64 L62,52 A2,2 0 0,1 64,50 Z" />
+
+        <!-- Top AI Gemini Sparkle 1 (Warm Gold Star, Upper Right) -->
+        <path
+            android:fillColor="#FCD34D"
+            android:pathData="M73,32 C73,35 75,37 78,37 C75,37 73,39 73,42 C73,39 71,37 68,37 C71,37 73,35 73,32 Z" />
+
+        <!-- Top AI Gemini Sparkle 2 (Electric Cyan Star, Upper Left) -->
+        <path
+            android:fillColor="#38BDF8"
+            android:pathData="M35,36 C35,38 36,39 38,39 C36,39 35,40 35,42 C35,40 34,39 32,39 C34,39 35,38 35,36 Z" />
+
+        <!-- Center Glowing Diamond Cap on Spine -->
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M54,30 L56,33 L54,36 L52,33 Z" />
+
+    </group>
+</vector>

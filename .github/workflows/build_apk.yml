@@ -1,0 +1,128 @@
+name: Build SpeechWithAbhi Android APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & Package Android APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Extract Project Files (ZIP & Nested Detection)
+        run: |
+          echo "=== Inspecting workspace files ==="
+          ls -la
+
+          # If the user uploaded SpeechWithAbhi_Project.zip directly to GitHub
+          if [ -f "SpeechWithAbhi_Project.zip" ]; then
+            echo "Detected SpeechWithAbhi_Project.zip in repo! Extracting..."
+            unzip -o SpeechWithAbhi_Project.zip
+          fi
+
+          # Also check for any other uploaded project zip archives
+          for z in *.zip; do
+            if [ -f "$z" ] && [ "$z" != "SpeechWithAbhi_Antigravity_Kit.zip" ]; then
+              echo "Extracting archive: $z"
+              unzip -o "$z"
+            fi
+          done
+
+          # If project files were extracted into a nested directory, find gradlew and root it
+          if [ ! -f "gradlew" ]; then
+            GRADLEW_PATH=$(find . -name "gradlew" -not -path "*/.*" | head -n 1)
+            if [ -n "$GRADLEW_PATH" ]; then
+              PROJECT_DIR=$(dirname "$GRADLEW_PATH")
+              echo "Moving project from $PROJECT_DIR to current directory..."
+              cp -rf "$PROJECT_DIR"/* .
+            fi
+          fi
+
+          # Grant execute permissions to Gradle wrapper script
+          chmod +x gradlew
+          echo "=== Workspace ready for Gradle build ==="
+          ls -la
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Ensure Gradle Wrapper JAR
+        run: |
+          if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
+            echo "Downloading official gradle-wrapper.jar..."
+            mkdir -p gradle/wrapper
+            curl -sLo gradle/wrapper/gradle-wrapper.jar https://raw.githubusercontent.com/gradle/gradle/v8.9.0/gradle/wrapper/gradle-wrapper.jar
+          fi
+
+      - name: Cache Gradle Packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Run Unit Tests
+        run: ./gradlew testDebugUnitTest --stacktrace
+
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Verify Built APK
+        run: |
+          echo "=== Locating output APKs ==="
+          find app/build/outputs/apk/ -type f -name "*.apk"
+          ls -lh app/build/outputs/apk/debug/app-debug.apk || ls -lh app/build/outputs/apk/*/*/*.apk
+
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SpeechWithAbhi-v1.0-Debug-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Publish GitHub Release (On Tag or Dispatch)
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: app/build/outputs/apk/debug/app-debug.apk
+          tag_name: ${{ github.ref_name || 'v1.0.0' }}
+          name: SpeechWithAbhi v1.0.0 Release (Jaswant Dehariya)
+          body: |
+            ### SpeechWithAbhi — Production Release v1.0.0
+            **Creator & Developer:** Jaswant Dehariya
+            
+            - Built automatically by GitHub Actions
+            - 100% working Android APK (Android 8.0+ to Android 15)
+            - 12 Verified Gemini AI Celestial Voices + Native Android TTS Offline Engine
+            - Intelligent Document Cleanup (PDF, DOCX, PPTX, TXT, OCR Images)
+            - AndroidX Media3 Background & Lock-Screen Playback
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

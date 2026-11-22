@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpeechWithAbhi</string>
+    <string name="app_tagline">अपनी फ़ाइलों को समझकर, साफ़ और प्राकृतिक आवाज़ में सुनो</string>
+    <string name="developer_credit">निर्माता और डेवलपर: जसवंत देहरिया (Jaswant Dehariya)</string>
+    <string name="developer_name">जसवंत देहरिया (Jaswant Dehariya)</string>
+
+    <!-- Navigation & Tabs -->
+    <string name="nav_home">होम</string>
+    <string name="nav_library">लाइब्रेरी</string>
+    <string name="nav_voices">वॉइस स्टूडियो</string>
+    <string name="nav_settings">सेटिंग्स</string>
+    <string name="nav_about">परिचय</string>
+
+    <!-- Actions -->
+    <string name="action_add_file">फ़ाइल जोड़ें</string>
+    <string name="action_play">चलाएं</string>
+    <string name="action_pause">रोकें</string>
+    <string name="action_resume">पुनः चलाएं</string>
+    <string name="action_stop">बंद करें</string>
+    <string name="action_skip_next">अगला भाग</string>
+    <string name="action_skip_prev">पिछला भाग</string>
+    <string name="action_rewind_10">10 से पीछे</string>
+    <string name="action_forward_30">30 से आगे</string>
+    <string name="action_clean_now">फ़ाइल साफ़ करें</string>
+    <string name="action_show_removed">हटाया गया भाग देखें</string>
+    <string name="action_restore_item">पुनर्स्थापित करें</string>
+    <string name="action_translate">अनुवाद करके सुनें</string>
+    <string name="action_bookmark">बुकमार्क करें</string>
+    <string name="action_clear_cache">ऑडियो कैश साफ़ करें</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">ऑडियो वाचन</string>
+    <string name="notification_channel_desc">सक्रिय ऑडियो प्लेबैक नियंत्रण</string>
+
+    <!-- Statuses -->
+    <string name="status_ready">तैयार</string>
+    <string name="status_parsing">दस्तावेज़ पढ़ा जा रहा है…</string>
+    <string name="status_cleaning">हेडर, फुटर और अनावश्यक भाग साफ़ हो रहे हैं…</string>
+    <string name="status_synthesizing">आवाज़ तैयार की जा रही है…</string>
+    <string name="status_playing">चल रहा है</string>
+    <string name="status_paused">रुका हुआ</string>
+    <string name="status_offline_fallback">डिवाइस टीटीएस से चल रहा है (ऑफ़लाइन)</string>
+</resources>

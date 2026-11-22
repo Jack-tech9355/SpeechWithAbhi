@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Palette: Deep Indigo & Warm Amber -->
+    <color name="primary">#1E3A8A</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#DBEAFE</color>
+    <color name="on_primary_container">#1E40AF</color>
+
+    <color name="secondary">#D97706</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary_container">#FEF3C7</color>
+    <color name="on_secondary_container">#92400E</color>
+
+    <color name="background">#0F172A</color>
+    <color name="surface">#1E293B</color>
+    <color name="surface_variant">#334155</color>
+    <color name="on_surface">#F8FAFC</color>
+</resources>
